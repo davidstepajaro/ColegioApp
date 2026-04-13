@@ -345,6 +345,9 @@ private Controlador controlador;
     int horas;
     try {
         horas=Integer.parseInt(jTextField9.getText().trim());
+        if (horas <=0){
+            javax.swing.JOptionPane.showMessageDialog(this, "Las horas deben ser mayores a 0");
+        }
     }catch(Exception e) {
         javax.swing.JOptionPane.showMessageDialog(this,"Horas invalidas");
         return;
