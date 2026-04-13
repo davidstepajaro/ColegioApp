@@ -61,4 +61,75 @@ public class ProfesorTest {
 
         assertEquals("Cedula invalida", ex.getMessage());
     }
+    @Test
+    public void testCalculoSalario() {
+    Profesor p = new Profesor(
+        "Ana",
+        "Calle 1",
+        "3001234568",
+        "10-05-1990",
+        "789456",
+        "Fisica",
+        10000,
+        10
+    );
+
+    double esperado = 10000 * 10 * 1.30;
+
+    assertEquals(esperado, p.calcularSalario(), 0.01);
+
+    }
+    @Test
+    public void testPrestaciones() {
+    Profesor p = new Profesor(
+        "Luis",
+        "Calle 2",
+        "3001234569",
+        "10-05-1985",
+        "852369",
+        "Quimica",
+        10000,
+        10
+    );
+
+    double esperado = p.calcularSalario() * 0.19;
+
+    assertEquals(esperado, p.calcularPrestaciones(), 0.01);
+    }
+    @Test
+    public void testSalarioConBono() {
+    Profesor p = new Profesor(
+        "Mario",
+        "Calle 3",
+        "3001234570",
+        "10-05-1980",
+        "963258",
+        "Biologia",
+        10000,
+        10
+    );
+
+    double salarioNormal = p.calcularSalario();
+    double salarioConBono = p.calcularSalario(50000);
+
+    assertEquals(salarioNormal + 50000, salarioConBono, 0.01);
+    }
+    @Test
+    public void testSalarioInvalido() {
+     Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+        new Profesor(
+            "Pedro",
+            "Calle 4",
+            "3001234571",
+            "10-05-1990",
+            "741852",
+            "Historia",
+            -10000, // ❌ inválido
+            10
+        );
+    });
+
+    assertEquals("Salario invalido", ex.getMessage());
+    }
+    
 }
