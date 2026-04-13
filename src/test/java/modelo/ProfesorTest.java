@@ -124,7 +124,7 @@ public class ProfesorTest {
             "10-05-1990",
             "741852",
             "Historia",
-            -10000, // ❌ inválido
+            -10000, //  inválido
             10
         );
     });
