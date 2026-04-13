@@ -52,6 +52,8 @@ private Controlador controlador;
         jTextField7 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,13 +121,21 @@ private Controlador controlador;
 
         jLabel8.setText("Area profesor:");
 
+        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField9ActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Hora mes:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -133,11 +143,12 @@ private Controlador controlador;
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                     .addComponent(jTextField4)
                     .addComponent(jTextField3)
                     .addComponent(jTextField1)
@@ -145,7 +156,7 @@ private Controlador controlador;
                     .addComponent(jTextField6)
                     .addComponent(jTextField2)
                     .addComponent(jTextField7)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField8))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -172,7 +183,7 @@ private Controlador controlador;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(jButton2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3)
                             .addComponent(jButton4))
@@ -209,7 +220,11 @@ private Controlador controlador;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addContainerGap(27, Short.MAX_VALUE))))
         );
 
         pack();
@@ -231,13 +246,16 @@ private Controlador controlador;
     try {
 
     // VALIDAR CAMPOS VACIOS
-    if (jTextField1.getText().trim().isEmpty() ||
-        jTextField3.getText().trim().isEmpty() ||
-        jTextField5.getText().trim().isEmpty() ||
-        jTextField6.getText().trim().isEmpty() ||
-        jTextField7.getText().trim().isEmpty() ||
-        jTextField8.getText().trim().isEmpty() ||    
-        jTextField4.getText().trim().isEmpty()) {
+    if (jTextField9.getText().trim().isEmpty() || 
+            jTextField1.getText().trim().isEmpty() ||
+            jTextField2.getText().trim().isEmpty() ||
+            jTextField3.getText().trim().isEmpty() ||
+            jTextField5.getText().trim().isEmpty() ||
+            jTextField6.getText().trim().isEmpty() ||
+            jTextField7.getText().trim().isEmpty() ||
+            jTextField8.getText().trim().isEmpty() ||
+            jTextField4.getText().trim().isEmpty()) 
+    {
 
         javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios");
         return;
@@ -264,23 +282,34 @@ private Controlador controlador;
 
     // VALIDAR SALARIO
     double salario;
+        
     try {
         salario = Double.parseDouble(jTextField4.getText().trim());
     } catch (Exception e) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Salario invalido");
+        javax.swing.JOptionPane.showMessageDialog(this, "salario invalido");
         return;
+    }
+    
+    //validar horas
+    int horas;
+    try {
+        horas=Integer.parseInt(jTextField9.getText().trim());
+    }catch(Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(this,"Horas invalidas");
+        return;
+        
     }
 
     // CREAR PROFESOR
     Profesor p = new Profesor(
         jTextField1.getText().trim(),
-        jTextField3.getText().trim(),
+        jTextField2.getText().trim(),    
         jTextField5.getText().trim(),
         jTextField6.getText().trim(),
         jTextField7.getText().trim(),
         area, 
         salario,
-        10
+        horas
     );
 
     controlador.agregarProfesor(p);
@@ -296,7 +325,7 @@ private Controlador controlador;
     jTextField6.setText("");
     jTextField7.setText("");
     jTextField8.setText("");
-
+    jTextField9.setText("");
 } catch (Exception ex) {
     ex.printStackTrace();
     javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -376,6 +405,10 @@ private Controlador controlador;
 }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -424,6 +457,7 @@ private Controlador controlador;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
@@ -434,5 +468,6 @@ private Controlador controlador;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
