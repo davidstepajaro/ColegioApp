@@ -17,10 +17,61 @@ private Controlador controlador;
      * Creates new form VistaPrincipal
      */
     public VistaPrincipal() {
-        initComponents();
-          controlador = new Controlador();
-    }
+    initComponents();
+    controlador = new Controlador();
 
+    // Fondo general oscuro
+    getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+
+    // Botones en tonos rojos
+    jButton1.setBackground(new java.awt.Color(139, 0, 0));
+    jButton2.setBackground(new java.awt.Color(178, 34, 34));
+    jButton3.setBackground(new java.awt.Color(165, 42, 42));
+    jButton4.setBackground(new java.awt.Color(120, 0, 0));
+
+    // Texto blanco en botones
+    jButton1.setForeground(java.awt.Color.WHITE);
+    jButton2.setForeground(java.awt.Color.WHITE);
+    jButton3.setForeground(java.awt.Color.WHITE);
+    jButton4.setForeground(java.awt.Color.WHITE);
+
+    // Ajustes visuales de botones
+    jButton1.setOpaque(true);
+    jButton2.setOpaque(true);
+    jButton3.setOpaque(true);
+    jButton4.setOpaque(true);
+
+    jButton1.setBorderPainted(false);
+    jButton2.setBorderPainted(false);
+    jButton3.setBorderPainted(false);
+    jButton4.setBorderPainted(false);
+
+    jButton1.setFocusPainted(false);
+    jButton2.setFocusPainted(false);
+    jButton3.setFocusPainted(false);
+    jButton4.setFocusPainted(false);
+
+    // Cursor tipo mano
+    jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+    // Área de texto
+    jTextArea1.setBackground(new java.awt.Color(50, 50, 50));
+    jTextArea1.setForeground(java.awt.Color.WHITE);
+
+    // Labels en blanco
+    jLabel1.setForeground(java.awt.Color.WHITE);
+    jLabel2.setForeground(java.awt.Color.WHITE);
+    jLabel3.setForeground(java.awt.Color.WHITE);
+    jLabel4.setForeground(java.awt.Color.WHITE);
+    jLabel5.setForeground(java.awt.Color.WHITE);
+    jLabel6.setForeground(java.awt.Color.WHITE);
+    jLabel7.setForeground(java.awt.Color.WHITE);
+    jLabel8.setForeground(java.awt.Color.WHITE);
+    jLabel9.setForeground(java.awt.Color.WHITE);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
